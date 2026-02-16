@@ -100,15 +100,22 @@ if cfg.get("show_params", False):
 if active == "Обзор и KPI":
     from ui.pages.overview import show_overview_page
     show_overview_page()
+
 elif active == "Товары и прогноз":
-    st.info("Детализация по товарам и расчеты (таблицы/графики)")
+    from ui.pages.inventory import show_inventory_page
+    show_inventory_page()
+
 elif active == "Финансы":
     st.info("Финансовое планирование (cash flow, графики)")
+
 elif active == "Маркетинг":
     st.info("Влияние маркетинга на прогноз")
+
 elif active == "Контрагенты":
     st.info("Управление контрагентами (таблицы, формы)")
+
 elif active == "Матрица сезонности":
     st.info("Матрица сезонности (heatmaps)")
+
 elif active == "Источник данных":
     st.info("Настройка источников (API keys, подключения)")
