@@ -9,7 +9,8 @@ SVG_ICONS = {
     "alert-triangle": '<path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>',
     "stats": '<line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line>',
     "wallet": '<rect x="2" y="5" width="20" height="14" rx="2" ry="2"></rect><path d="M16 11h.01"></path>',
-    "trend": '<polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline>'
+    "trend": '<polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline>',
+    "layers": '<polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline>'
 }
 
 def render_kpi_card(title, value, subtitle, color, icon_svg):
@@ -26,6 +27,25 @@ def render_kpi_card(title, value, subtitle, color, icon_svg):
             </div>
             <div style="font-size: 1.6rem; font-weight: 800; color: #1e293b; margin-bottom: 4px;">{value}</div>
             <div style="color: #10b981; font-size: 0.8rem; font-weight: 500;">{subtitle}</div>
+        </div>
+    """, unsafe_allow_html=True)
+
+def render_group_metric_card(title, value, label, sub_value, color, icon_key):
+    """Специальная карточка для прогноза по группам (Наборы, Розница, Опт)"""
+    icon_svg = SVG_ICONS.get(icon_key, SVG_ICONS["box"])
+    st.markdown(f"""
+        <div style="background: white; padding: 20px; border-radius: 12px; border: 1px solid #e2e8f0; height: 100%;">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                <div style="background: {color}20; padding: 8px; border-radius: 8px; color: {color}; display: flex; align-items: center;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">{icon_svg}</svg>
+                </div>
+                <div style="color: #64748b; font-size: 0.85rem; font-weight: 600;">{title}</div>
+            </div>
+            <div style="font-size: 1.5rem; font-weight: 800; color: #1e293b;">{value}</div>
+            <div style="margin-top: 8px; display: flex; align-items: center; gap: 5px;">
+                <span style="color: #94a3b8; font-size: 0.75rem;">{label}:</span>
+                <span style="color: #1e293b; font-size: 0.8rem; font-weight: 700;">{sub_value}</span>
+            </div>
         </div>
     """, unsafe_allow_html=True)
 
