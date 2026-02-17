@@ -114,7 +114,9 @@ elif active == "Маркетинг":
     show_marketing_page()
 
 elif active == "Контрагенты":
-    st.info("Управление контрагентами (таблицы, формы)")
+    # Хирургическое изменение: подключаем новую стратегическую страницу контрагентов
+    from ui.pages.agents import show_agents_page
+    show_agents_page()
 
 elif active == "Матрица сезонности":
     st.info("Матрица сезонности (heatmaps)")
