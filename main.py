@@ -106,7 +106,9 @@ elif active == "Товары и прогноз":
     show_inventory_page()
 
 elif active == "Финансы":
-    st.info("Финансовое планирование (cash flow, графики)")
+    # Хирургическое изменение: заменяем st.info на вызов реальной страницы
+    from ui.pages.finance import show_finance_page
+    show_finance_page()
 
 elif active == "Маркетинг":
     st.info("Влияние маркетинга на прогноз")
